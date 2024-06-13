@@ -9,7 +9,6 @@ from comp import *
 from datetime import datetime
 
 app = Flask(__name__)
-app.secret_key = os.urandom(48)  # Generate a random secret key for each run. Replace with a static key in production.
 UPLOAD_FOLDER = r'.\static\uploads'
 ALLOWED_EXTENSIONS_VIDEO = {'mp4', 'avi', 'mov'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
