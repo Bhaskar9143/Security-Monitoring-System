@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .login-container {
+            background: linear-gradient(135deg, #ffffff, #e6e6e6);
+            padding: 40px;
+            border-radius: 15px;
+            border: 5px solid #007bff;
+            box-shadow: 0 0 30px rgba(0, 123, 255, 0.6);
+            text-align: center;
+            z-index: 1;
+            max-width: 400px;
+            width: 100%;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 16px;
+            background-color: #f9f9f9;
+            color: #333333;
+        }
+        button {
+            padding: 15px 30px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        h2 {
+            margin-bottom: 25px;
+            color: #007bff;
+        }
+        .blue-ball {
+            width: 40px;
+            height: 40px;
+            background-color: #007bff;
+            border-radius: 50%;
+            position: absolute;
+            animation: float 4s infinite;
+        }
+        .blue-ball:nth-child(1) {
+            top: 10%;
+            left: 15%;
+            animation-duration: 4s;
+        }
+        .blue-ball:nth-child(2) {
+            top: 25%;
+            left: 45%;
+            animation-duration: 5s;
+        }
+        .blue-ball:nth-child(3) {
+            top: 50%;
+            left: 30%;
+            animation-duration: 6s;
+        }
+        .blue-ball:nth-child(4) {
+            top: 75%;
+            left: 70%;
+            animation-duration: 7s;
+        }
+        .blue-ball:nth-child(5) {
+            top: 15%;
+            left: 80%;
+            animation-duration: 4.5s;
+        }
+        .blue-ball:nth-child(6) {
+            top: 65%;
+            left: 20%;
+            animation-duration: 6.5s;
+        }
+        .blue-ball:nth-child(7) {
+            top: 85%;
+            left: 50%;
+            animation-duration: 5.5s;
+        }
+        .blue-ball:nth-child(8) {
+            top: 40%;
+            left: 10%;
+            animation-duration: 7.5s;
+        }
+        .blue-ball:nth-child(9) {
+            top: 30%;
+            left: 90%;
+            animation-duration: 6s;
+        }
+        .blue-ball:nth-child(10) {
+            top: 55%;
+            left: 60%;
+            animation-duration: 8s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="blue-ball"></div>
+    <div class="blue-ball"></div>
+    <div class="blue-ball"></div>
+    <div class="blue-ball"></div>
+    <div class="blue-ball"></div>
+    <div class="blue-ball"></div>
+    <div class="blue-ball"></div>
+    <div class="blue-ball"></div>
+    <div class="blue-ball"></div>
+    <div class="blue-ball"></div>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <form method="post">
+            <input type="text" name="username" placeholder="Username" required><br><br>
+            <input type="password" name="password" placeholder="Password" required><br><br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>
