@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from PIL import Image
 import stepic
 import os
+import time
 
 app = Flask(__name__)
 
@@ -35,11 +36,18 @@ def upload_image():
         image = request.files['image']
         name = request.form['name']
         
-        # Ensure the file extension is .png
-        image.filename = 'uploaded_image.png'
+        # Generate a unique filename using a timestamp
+        unique_filename = f"uploaded_image_{int(time.time())}.png"
         
-        # Save the image file to the specified directory
-        image_path = os.path.join('D:\\', 'projects', 'facerec', 'test2', 'homies_images', image.filename)
+        # Define the directory path to save the image
+        directory_path = os.path.join('D:\\', 'projects', 'facerec', 'test4', 'homies_images')
+        
+        # Ensure the directory exists
+        if not os.path.exists(directory_path):
+            os.makedirs(directory_path)
+        
+        # Save the image file to the specified directory with a unique filename
+        image_path = os.path.join(directory_path, unique_filename)
         image.save(image_path)
         
         # Perform encoding with the provided name

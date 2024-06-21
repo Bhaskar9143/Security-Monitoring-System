@@ -12,7 +12,7 @@ def clear_output_folder(output_folder):
     for f in files:
         os.remove(f)
 
-def extract_unique_faces(video_path, output_folder=r"D:\projects\facerec\test2\images", interval=0, tolerance=0.1):
+def extract_unique_faces(video_path, output_folder=r"D:\projects\facerec\test4\images", interval=0, tolerance=0.1):
     """
     Extract unique faces from a video at given interval.
 

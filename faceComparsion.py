@@ -18,10 +18,7 @@ def are_faces_same(image_path1, image_path2, tolerance=0.6):
 
     # Compare the first face in each image
     match = face_recognition.compare_faces([encodings1[0]], encodings2[0], tolerance=tolerance)
-    print(match[0])
+#     print(match[0])
     return match[0]
 
-
-image_path1 = r"D:\projects\facerec\test2\homies_images\uploaded_image.png"
-image_path2 = r"D:\projects\facerec\test2\images\face_0.png"
 

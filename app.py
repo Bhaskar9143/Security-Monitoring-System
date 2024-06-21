@@ -2,16 +2,15 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import os
 import shutil
 from videoToPhoto import extract_unique_faces
-from traversing import *
-from storingDataInImage import *
-from faceComparsion import *
-from comp import *
-from datetime import datetime
+from comp import comp
+import os
+import threading
 
 app = Flask(__name__)
 UPLOAD_FOLDER = r'.\static\uploads'
 ALLOWED_EXTENSIONS_VIDEO = {'mp4', 'avi', 'mov'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.secret_key = os.urandom(48)  # Generate a random secret key for each run. Replace with a static key in production.
 
 def allowed_file(filename, allowed_extensions):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in allowed_extensions
@@ -60,12 +59,20 @@ def upload_file():
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
     video_path = f"./static/uploads/{filename}"
-    extract_unique_faces(video_path, r'D:\projects\facerec\test2\images', interval=30, tolerance=0.6)
-    homies_images = r'D:\projects\facerec\test2\homies_images'
-    images = r'D:\projects\facerec\test2\images'
+    extract_unique_faces(video_path, r'D:\projects\facerec\test4\images', interval=30, tolerance=0.6)
+    homies_images = r'D:\projects\facerec\test4\homies_images'
+    images = r'D:\projects\facerec\test4\images'
     messages = comp(homies_images, images)
+    def send_message_thread():
+        import pywhatkit as kit
+        kit.sendwhatmsg_instantly('+919502237652',  "!! INTRUDER !! Please check, there is a new face detected whil", wait_time=20, tab_close=True)
+    for i in messages:
+        if i[:2]=="An":
+            thread = threading.Thread(target=send_message_thread)
+            thread.start()
+            break
     return render_template('video_player.html', filename=filename, messages=messages)
 
 if __name__ == '__main__':
-    clear_folder(r'D:\projects\facerec\test2\images')  # Clear images folder on start
-    app.run(debug=True)
+    clear_folder(r'D:\projects\facerec\test4\images')  
+    app.run(debug=True,host="0.0.0.0",port=8000)
