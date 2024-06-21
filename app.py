@@ -10,7 +10,7 @@ app = Flask(__name__)
 UPLOAD_FOLDER = r'.\static\uploads'
 ALLOWED_EXTENSIONS_VIDEO = {'mp4', 'avi', 'mov'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.secret_key = os.urandom(48)  # Generate a random secret key for each run. Replace with a static key in production.
+#app.secret_key = os.urandom(48)  # Generate a random secret key for each run. Replace with a static key in production.
 
 def allowed_file(filename, allowed_extensions):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in allowed_extensions
