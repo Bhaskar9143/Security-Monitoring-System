@@ -5,7 +5,7 @@ from videoToPhoto import extract_unique_faces
 from comp import comp
 import os
 import threading
-
+print("Hello")
 app = Flask(__name__)
 UPLOAD_FOLDER = r'.\static\uploads'
 ALLOWED_EXTENSIONS_VIDEO = {'mp4', 'avi', 'mov'}
